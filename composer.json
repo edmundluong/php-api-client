@@ -1,0 +1,39 @@
+{
+  "name": "edmundluong/php-api-client",
+  "description": "Provides a simple layer of abstraction over Guzzle Services",
+  "keywords": [
+    "api",
+    "client",
+    "wrapper",
+    "guzzle"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Edmund Luong",
+      "email": "edmundvmluong@gmail.com",
+      "homepage": "https://github.com/edmundluong"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "guzzlehttp/guzzle-services": "0.5",
+    "guzzlehttp/log-subscriber": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.8.13"
+  },
+  "autoload": {
+    "psr-4": {
+      "Edmund\\PhpApiClient\\": "src/PhpApiClient"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ]
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
