@@ -24,6 +24,15 @@ use GuzzleHttp\Message\RequestInterface;
 abstract class AbstractAuthenticator implements SubscriberInterface
 {
     /**
+     * Authenticator constructor takes in a configuration array.
+     *
+     * @param array $config
+     */
+    public function __construct(array $config = [])
+    {
+    }
+
+    /**
      * Returns an array of event names this subscriber wants to listen to.
      *
      * @return array
