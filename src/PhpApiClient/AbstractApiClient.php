@@ -185,7 +185,7 @@ abstract class AbstractApiClient extends \GuzzleHttp\Command\Guzzle\GuzzleClient
      */
     private function authenticate()
     {
-        $this->verifyAuthenticationType();
+        $this->assertValidAuthType();
         $this->client->getEmitter()->attach(new $this->authenticators[$this->authType]($this->apiConfig));
     }
 
@@ -194,7 +194,7 @@ abstract class AbstractApiClient extends \GuzzleHttp\Command\Guzzle\GuzzleClient
      *
      * @throws UnregisteredAuthenticatorException
      */
-    private function verifyAuthenticationType()
+    private function assertValidAuthType()
     {
         if (
             !array_key_exists($this->authType, $this->authenticators)
