@@ -71,7 +71,6 @@ class AbstractApiClientTest extends \PHPUnit_Framework_TestCase
 
         $twitterUrls = new TwitterUrlsApiClient(['authType' => 'oauth2']);
         $this->assertEquals('oauth2', $twitterUrls->getAuthType());
-        $this->assertEquals('oauth2', $twitterUrls->getHttpClient()->getDefaultOption('auth'));
 
         $listeners = $twitterUrls->getHttpClient()->getEmitter()->listeners();
         $this->assertCount(1, $listeners);

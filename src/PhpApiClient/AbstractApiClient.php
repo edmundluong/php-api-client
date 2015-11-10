@@ -141,7 +141,6 @@ abstract class AbstractApiClient extends \GuzzleHttp\Command\Guzzle\GuzzleClient
             $this->setDebugger();
         }
         if ($this->needsAuthentication()) {
-            $this->client->setDefaultOption('auth', $this->authType);
             $this->authenticate();
         }
 
