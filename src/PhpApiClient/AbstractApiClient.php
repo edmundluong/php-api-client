@@ -184,8 +184,11 @@ abstract class AbstractApiClient extends \GuzzleHttp\Command\Guzzle\GuzzleClient
      */
     private function authenticate()
     {
-        $this->assertValidAuthType();
-        $this->client->getEmitter()->attach(new $this->authenticators[$this->authType]($this->apiConfig));
+        self::assertValidAuthType();
+
+        $this->client
+            ->getEmitter()
+            ->attach(new $this->authenticators[$this->authType]($this));
     }
 
     /**

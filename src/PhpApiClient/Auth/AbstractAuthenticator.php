@@ -13,10 +13,10 @@
 
 namespace Edmund\PhpApiClient\Auth;
 
+use Edmund\PhpApiClient\AbstractApiClient;
 use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Event\RequestEvents;
 use GuzzleHttp\Event\SubscriberInterface;
-use GuzzleHttp\Message\RequestInterface;
 
 /**
  * A base authenticator object that should be used to sign API requests with.
@@ -24,12 +24,18 @@ use GuzzleHttp\Message\RequestInterface;
 abstract class AbstractAuthenticator implements SubscriberInterface
 {
     /**
+     * @var AbstractApiClient $client
+     */
+    protected $client;
+
+    /**
      * Authenticator constructor takes in a configuration array.
      *
-     * @param array $config
+     * @param AbstractApiClient $client
      */
-    public function __construct(array $config = [])
+    public function __construct(AbstractApiClient $client)
     {
+        $this->client = $client;
     }
 
     /**
@@ -47,18 +53,13 @@ abstract class AbstractAuthenticator implements SubscriberInterface
      *
      * @param BeforeEvent $event
      */
-    abstract function sign(BeforeEvent $event);
+    abstract public function sign(BeforeEvent $event);
 
     /**
-     * Returns the request's authentication type.
-     *
-     * @param RequestInterface $request
-     * @param string           $authType
-     *
-     * @return string
+     * @return  AbstractApiClient
      */
-    protected function requestHasAuth(RequestInterface $request, $authType)
+    public function getClient()
     {
-        return $request->getConfig()['auth'] === $authType;
+        return $this->client;
     }
 }
